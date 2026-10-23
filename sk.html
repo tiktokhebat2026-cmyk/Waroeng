@@ -1,0 +1,728 @@
+)
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saoeng Kito | Menu Nusantara</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --cream: #f7f2e8;
+            --white: #fffdf8;
+            --green: #354432;
+            --green-light: #59664d;
+            --brown: #986444;
+            --text: #292b22;
+            --muted: #777568;
+            --border: #e5dccb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-content {
+            min-height: 82px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--green);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: var(--green);
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+        }
+
+        .logo-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 23px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .logo-caption {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--brown);
+        }
+
+        /* HERO */
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 55px;
+            padding-top: 65px;
+            padding-bottom: 70px;
+        }
+
+        .eyebrow {
+            color: var(--brown);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1.12;
+            margin: 18px 0;
+        }
+
+        .hero h1 span {
+            color: var(--green-light);
+        }
+
+        .hero p {
+            max-width: 450px;
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 26px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 22px;
+            background: var(--green);
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 3px;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            background: var(--green-light);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            border-radius: 180px 180px 4px 4px;
+            background: var(--border);
+        }
+
+        /* JUDUL BAGIAN */
+
+        .section {
+            padding: 65px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 4vw, 42px);
+            margin: 10px 0;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* MENU */
+
+        .menu-section {
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            margin: 35px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .menu-card {
+            display: flex;
+            gap: 17px;
+            padding: 15px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(40, 40, 25, 0.08);
+        }
+
+        .menu-image {
+            width: 125px;
+            height: 140px;
+            flex-shrink: 0;
+            object-fit: cover;
+            border-radius: 3px;
+            background: var(--cream);
+        }
+
+        .menu-info {
+            min-width: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .menu-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 19px;
+            line-height: 1.35;
+            margin: 2px 0 7px;
+        }
+
+        .menu-description {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .menu-bottom {
+            width: 100%;
+            margin-top: auto;
+            padding-top: 9px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .menu-label {
+            color: var(--green-light);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .menu-price {
+            color: var(--brown);
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* TENTANG KAMI */
+
+        .about {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .about-decoration {
+            min-height: 280px;
+            background: var(--green);
+            color: var(--cream);
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 30px;
+            border-radius: 150px 150px 4px 4px;
+        }
+
+        .about-seal {
+            width: 145px;
+            height: 145px;
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-seal strong {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+        }
+
+        .about-seal span {
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            line-height: 1.25;
+            margin: 12px 0 18px;
+        }
+
+        .about-text p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            background: var(--green);
+            color: var(--cream);
+            padding: 30px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer p {
+            color: #d8d8c9;
+            font-size: 12px;
+        }
+
+        /* RESPONSIVE HP */
+
+        @media (max-width: 760px) {
+            .nav-content {
+                min-height: 72px;
+            }
+
+            .nav-links {
+                gap: 13px;
+                font-size: 11px;
+            }
+
+            .logo-name {
+                font-size: 19px;
+            }
+
+            .logo-caption {
+                font-size: 8px;
+                letter-spacing: 1.5px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding-top: 42px;
+                padding-bottom: 45px;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .section {
+                padding: 45px 0;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-image {
+                width: 115px;
+                height: 130px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-decoration {
+                min-height: 230px;
+            }
+
+            .about-text h2 {
+                font-size: 31px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 390px) {
+            .container {
+                width: 94%;
+            }
+
+            .nav-links {
+                gap: 9px;
+                font-size: 10px;
+            }
+
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .menu-card {
+                gap: 11px;
+                padding: 10px;
+            }
+
+            .menu-image {
+                width: 95px;
+                height: 120px;
+            }
+
+            .menu-name {
+                font-size: 17px;
+            }
+
+            .menu-description {
+                font-size: 11px;
+            }
+
+            .menu-price {
+                font-size: 12px;
+            }
+
+            .menu-label {
+                font-size: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#beranda" class="logo">
+                <div class="logo-icon">S</div>
+                <div>
+                    <div class="logo-name">Saoeng Kito</div>
+                    <div class="logo-caption">Rasa Nusantara</div>
+                </div>
+            </a>
+
+            <div class="nav-links">
+                <a href="#beranda">Beranda</a>
+                <a href="#menu">Menu</a>
+                <a href="#tentang">Tentang</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="container hero" id="beranda">
+            <div>
+                <div class="eyebrow">Warisan Kuliner Nusantara</div>
+
+                <h1>
+                    Sajian klasik,<br>
+                    <span>rasa istimewa.</span>
+                </h1>
+
+                <p>
+                    Nikmati kehangatan masakan Nusantara dengan bumbu pilihan,
+                    bahan segar, dan cita rasa yang selalu dirindukan.
+                    Setiap hidangan disiapkan dengan sepenuh hati.
+                </p>
+
+                <a href="#menu" class="button">Lihat Menu Kami &rarr;</a>
+            </div>
+
+            <div>
+                <img
+                    class="hero-image"
+                    src="nasi goreng.jpg"
+                    alt="Hidangan khas Saoeng Kito"
+                >
+            </div>
+        </section>
+
+        <section class="section menu-section" id="menu">
+            <div class="container">
+
+                <div class="section-heading">
+                    <div class="eyebrow">Dari Dapur Kami</div>
+                    <h2>Menu Saoeng Kito</h2>
+                    <p>Hidangan rumahan dengan cita rasa autentik.</p>
+                </div>
+
+                <h3 class="category-title">Hidangan Utama</h3>
+
+                <div class="menu-grid">
+
+                    <article class="menu-card">
+                        <img
+                            class="menu-image"
+                            src="ayam penyet.jpg"
+                            alt="Ayam Penyet"
+                            loading="lazy"
+                        >
+
+                        <div class="menu-info">
+                            <h3 class="menu-name">Ayam Penyet</h3>
+
+                            <p class="menu-description">
+                                Ayam berbumbu dengan sambal segar,
+                                lalapan, dan nasi hangat.
+                            </p>
+
+                            <div class="menu-bottom">
+                                <span class="menu-label">Favorit</span>
+                                <span class="menu-price">Rp 25.000</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="menu-card">
+                        <img
+                            class="menu-image"
+                            src="iga.jpg"
+                            alt="Iga Bakar Sapi"
+                            loading="lazy"
+                        >
+
+                        <div class="menu-info">
+                            <h3 class="menu-name">Iga Bakar Sapi</h3>
+
+                            <p class="menu-description">
+                                Iga empuk dengan bumbu bakar kaya rasa
+                                dan aroma panggangan.
+                            </p>
+
+                            <div class="menu-bottom">
+                                <span class="menu-label">Bumbu Spesial</span>
+                                <span class="menu-price">Rp 45.000</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="menu-card">
+                        <img
+                            class="menu-image"
+                            src="soto babat.jpeg"
+                            alt="Soto Babat Solo"
+                            loading="lazy"
+                        >
+
+                        <div class="menu-info">
+                            <h3 class="menu-name">Soto Babat Solo</h3>
+
+                            <p class="menu-description">
+                                Kuah rempah gurih dengan babat,
+                                sayuran, dan pelengkap pilihan.
+                            </p>
+
+                            <div class="menu-bottom">
+                                <span class="menu-label">Tradisional</span>
+                                <span class="menu-price">Rp 22.000</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="menu-card">
+                        <img
+                            class="menu-image"
+                            src="nasi goreng.jpg"
+                            alt="Nasi Goreng Spesial"
+                            loading="lazy"
+                        >
+
+                        <div class="menu-info">
+                            <h3 class="menu-name">Nasi Goreng Spesial</h3>
+
+                            <p class="menu-description">
+                                Nasi goreng berbumbu dengan telur,
+                                sayuran, dan kerupuk renyah.
+                            </p>
+
+                            <div class="menu-bottom">
+                                <span class="menu-label">Menu Klasik</span>
+                                <span class="menu-price">Rp 28.000</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <h3 class="category-title">Minuman Segar</h3>
+
+                <div class="menu-grid">
+
+                    <article class="menu-card">
+                        <img
+                            class="menu-image"
+                            src="es.jpg"
+                            alt="Fresh Orange Juice"
+                            loading="lazy"
+                        >
+
+                        <div class="menu-info">
+                            <h3 class="menu-name">Fresh Orange Juice</h3>
+
+                            <p class="menu-description">
+                                Perasan buah segar dengan rasa alami
+                                yang menyegarkan.
+                            </p>
+
+                            <div class="menu-bottom">
+                                <span class="menu-label">Segar Harian</span>
+                                <span class="menu-price">Rp 15.000</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="menu-card">
+                        <img
+                            class="menu-image"
+                            src="espukat.jpg"
+                            alt="Es Alpukat Campur"
+                            loading="lazy"
+                        >
+
+                        <div class="menu-info">
+                            <h3 class="menu-name">Es Alpukat Campur</h3>
+
+                            <p class="menu-description">
+                                Alpukat lembut dengan campuran manis
+                                dan es yang menyegarkan.
+                            </p>
+
+                            <div class="menu-bottom">
+                                <span class="menu-label">Pilihan Spesial</span>
+                                <span class="menu-price">Rp 18.000</span>
+                            </div>
+                        </div>
+                    </article>
+
+                  
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="tentang">
+            <div class="container about">
+
+                <div class="about-decoration">
+                    <div class="about-seal">
+                        <strong>SK</strong>
+                        <span>RASA NUSANTARA</span>
+                    </div>
+                </div>
+
+                <div class="about-text">
+                    <div class="eyebrow">Tentang Kami</div>
+
+                    <h2>
+                        Tradisi sederhana,<br>
+                        rasa penuh cerita.
+                    </h2>
+
+                    <p>
+                        Saoeng Kito menghadirkan hidangan Nusantara
+                        yang terinspirasi dari kekayaan kuliner Indonesia.
+                    </p>
+
+                    <p>
+                        Kami percaya bahwa makanan yang istimewa
+                        berawal dari bahan pilihan, bumbu yang tepat,
+                        dan kehangatan dalam setiap sajian.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="logo">
+                <div class="logo-icon" style="color:#f7f2e8;border-color:#f7f2e8;">
+                    S
+                </div>
+
+                <div>
+                    <div class="logo-name">Saoeng Kito</div>
+                    <div class="logo-caption" style="color:
